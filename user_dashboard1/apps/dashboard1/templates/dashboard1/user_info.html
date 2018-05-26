@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <title>user info</title>
+</head>
+<body class="body">
+        <h2 class="header">
+                <a href="#">Test App</a> |-
+                <a href="/dashboard">Dashboard</a>-|<a href="/profile">Profile</a>________________________________
+                
+                <a href="/logoff">Log off</a>
+            </h2>
+
+            <div>
+                <h3>User Name:_______{{users.first_name}}</h3>
+                <p>Registered at:{{users.created_at|date:'M-d-Y'}}</p>
+                <p>User ID:{{users.id}}</p>
+                <p>Email address:{{users.email}}</p>
+                <p>Description:{{users.description}}</p>
+            </div>
+
+            <h2>Leave massage for {{users.first_name}}</h2>
+
+            <form action="/dashboard/post/{{users.id}}" method="POST">
+                {% csrf_token %}
+            <input class="comments_box" type="text" name="post" placeholder=" Write post here" >
+            <input type="submit" value="Post">
+
+            </form>
+    <div>
+
+        {%for u in user_post %}
+
+        <p class="margin-bottom"><a href="">{{u.user.first_name}}</a> wrote: </p> <p class="text_setting">Post time{{u.created_at|date:'h:s'}} ago</p>
+        <p class="post">{{u.post}}</p><br>
+
+        
+
+        {%for m in user_massage %}
+        <p class="margin-bottom"><a href="">{{m.user.first_name}}</a> wrote: </p> <p class="text_setting1" >Post time{{m.created_at|date:'h:s'}} ago</p>
+        <p class="massage">{{m.massage}}</p>
+
+        {%endfor%}
+
+        <form action="/dashboard/massage/{{u.id}}/{{users.id}}" method="POST">
+        {% csrf_token %}
+        <input class="comments_box" type="text" name="massage" placeholder=" Write comments on this comments">
+        <input type="submit" value="write comments" >
+        </form>
+        {%endfor%}
+    </div>
+        
+        
+        
+</body>
+
+</html>

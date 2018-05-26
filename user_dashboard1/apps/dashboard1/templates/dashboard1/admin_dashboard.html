@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+    <title>admin_dashboard</title>
+</head>
+<body class="body">
+        <h2 class="header">
+                <a href="#">Test App</a> |-
+                <a href="#">Dashboard</a>-|<a href="#">Profile</a>_______________________________________________
+                
+                <a href="/logoff">Log off</a>
+            </h2>
+    <h3 class="header">Manage Users________________________________________________________<a href="/users/new">Add new</a></h3>
+    <table id="customers">
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Created date</th>
+                <th>user_level</th>
+                <th>Actions</th>
+            </tr>
+     
+            {% for u in users %}
+            <tr>
+                <td>{{u.id}}</td>
+                <td><a href="{{u.id}}">{{u.first_name}} {{u.last_name}}</a></td>
+                <td>{{u.email}}</td>
+                <td>{{u.created_at}}</td>
+                {%if u.user_level == 1 %}
+                       <td>{{'adim'}}</td>
+                {%else%}
+                       <td>{{'user'}}</td>
+                {%endif%}
+
+
+                <td><a href="edit/{{u.id}}">Edit</a>| |<a href="/remove/{{u.id}}">remove</a></td>
+
+            </tr>
+            
+            
+            {%endfor%}
+
+        
+
+
+
+
+
+    </table>
+    <script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=55e0vgtrpep&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+    <title>Edit_user</title>
+</head>
+<body>
+        <h2 class="header">
+                <a href="#">Test App</a> |-
+                <a href="/dashboard">Dashboard</a>-|<a href="#">Profile</a>_________________________________________________________________
+                
+                <a href="/logoff">Log off</a>
+            </h2>
+    <h3 class="header"><a href="/dashboard/edit/{{user_id.id}}">Edit Your Profile</a></h3>
+
+    <form action="/update_user/{{users.id}}" method="POST">
+        {% csrf_token %}
+        <p>Email address</p>
+        <input type="text" name ="email" placeholder="Email" value="{{users.email}}">
+        <p>First Name:</p>
+        <input type="text" name="first_name" placeholder="First name" value="{{users.first_name}}">
+        <p>Last Name:</p>
+        <input type="text" name ="last_name" placeholder="Last name" value="{{users.last_name}}">
+        <p>Password:</p>
+        <input type="password" name="password" placeholder="Password" value="{{users.password}}">
+        <!-- <p>Password Confirmation:</p>
+        <input type="password" name="password_confirmation" placeholder="Confirm password"><br><br> -->
+        <p>Discription:</p>
+        <input type="text" name="description" value="{{users.description}}"><br><br>
+        <!-- <textarea name="description" cols="40" rows="6"placeholder="Type your description here" aria-valuetext ="{{users.description}}"></textarea><br> -->
+        
+
+
+        <input type="submit" value='save'>
+     
+    
+    </form><br>
+    
+</body>
+</html>

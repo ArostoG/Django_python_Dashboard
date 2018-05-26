@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% load static %}
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+    <title>register</title>
+</head>
+
+<body class="body">
+    <h2 class="header">
+        <a href="#">Test App</a> |-
+        <a href="#">Home</a>-|____________________________________________
+        <a href="/sigin">Sigin</a>
+    </h2>
+    <h3>Register:</h3>
+    <form action="/register_user" method="POST">
+        {% csrf_token %}
+        <p>Email address</p>
+        <input type="text" name ="email" placeholder="Email">
+        <p>First Name:</p>
+        <input type="text" name="first_name" placeholder="First name" >
+        <p>Last Name:</p>
+        <input type="text" name ="last_name" placeholder="Last name">
+        <p>Password:</p>
+        <input type="password" name="password" placeholder="Password">
+        <!-- <p>Password Confirmation:</p>
+        <input type="password" name="password_confirmation" placeholder="Confirm password"><br><br> -->
+
+        <input type="Submit">
+    
+    </form><br>
+
+    <a href="/sigin">Already have an account?|login</a>
+
+
+</body>
+
+</html>

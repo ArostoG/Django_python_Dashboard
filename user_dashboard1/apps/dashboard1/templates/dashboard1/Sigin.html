@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> {% load static %}
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+    <title>Sing in</title>
+</head>
+
+<body class="body">
+    <div class="header">
+    <h2>
+        <a href="#">Test App</a> |-
+        <a href="#">Home</a>-|_____________________________________________
+        <a href="/sigin">Sigin</a>
+    </h2>
+</div>
+
+    <div>
+        <br>
+        <h4>Signin</h4>
+        <form action="/login" method="POST">
+            {% csrf_token %}
+            <p>Email address:</p>
+            <input type="text" name="email" placeholder="Email">
+            <p>Password:</p>
+
+            <input type="password" name="password" placeholder="Password">
+            <br>
+            <br>
+            <input type="submit">
+            <br>
+            <br>
+            <a href="/register">Do'nt have an account? Register</a>
+        </form>
+
+    </div>
+</body>
+
+</html>
